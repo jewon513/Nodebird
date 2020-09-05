@@ -3,6 +3,7 @@ import {Button, Form, Input} from "antd";
 import Link from "next/link"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+import useInput from "../hooks/useInput";
 
 const ButtonWrapper = styled.div`
     margin-top: 10px;
@@ -16,23 +17,13 @@ const LoginForm = ({setIsLoggedIn}) => {
 
     // 인라인 함수로 넣어주게 될 경우 useCallback을 사용하도록 한다. 함수를 캐싱하여 리렌더링 시 새로운 함수를 만들지 않게 하기 위해서
 
-
-    const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
-
-    const onChangeId = useCallback((e)=>{
-        setId(e.target.value);
-    }, [])
-
-    const onChangePassword = useCallback((e)=>{
-        setPassword(e.target.value);
-    }, [])
+    const [id, onChangeId] = useInput('');
+    const [password, onChangePassword] = useInput('');
 
     const onSubmitForm = useCallback(()=>{
         console.log(id, password)
         setIsLoggedIn(true)
     }, [id,password])
-
 
     return (
         <FormWrapper onFinish={onSubmitForm}>
