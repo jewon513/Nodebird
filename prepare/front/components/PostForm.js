@@ -23,7 +23,7 @@ const PostForm = () => {
     },[]);
 
     return (
-        <Form stlye={{margin:'10px 0 20px'}} encType={"multpart/form-data"} onFinish={onSubmit}>
+        <Form style={{margin:'10px 0 20px'}} encType={"multpart/form-data"} onFinish={onSubmit}>
             <Input.TextArea value={text} onChange={onChangeText} maxLength={140} placeholder={"어떤 신기한 일이 있었나요?"}/>
             <div>
                 <input type={"file"} multiple={true} hidden={true} ref={ImageInput}/>
